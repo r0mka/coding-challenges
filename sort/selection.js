@@ -20,3 +20,8 @@ console.log(
   JSON.stringify(selectionSort([10, 9, 8, 23, -19, 5])) ===
     '[-19,5,8,9,10,23]'
 );
+
+console.log(
+  JSON.stringify(selectionSort([87, -5, -6, 32, 123])) ===
+    '[-6,-5,32,87,123]'
+);

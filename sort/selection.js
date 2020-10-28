@@ -25,3 +25,14 @@ console.log(
   JSON.stringify(selectionSort([87, -5, -6, 32, 123])) ===
     '[-6,-5,32,87,123]'
 );
+
+// random array
+const array = [...new Array(30).keys()].map((el) =>
+  Math.floor(Math.random() * 100)
+);
+
+const sortedArray = [...array].sort((a, b) => a - b);
+
+console.log(
+  JSON.stringify(selectionSort(array)) === JSON.stringify(sortedArray)
+);

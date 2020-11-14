@@ -8,27 +8,17 @@
     Space Complexity - O(1)
  */
 
-function isSubsequence(subseq, str) {
-  let i = 0;
-  let j = 0;
-
-  // loop over the first string and second string
-  // at the same time using two pointers
-  while (j < str.length) {
-    // if element at first pointer equals element at second
-    // increment first pointer
-    if (subseq[i] === str[j]) i++;
-    // Then increment second pointer
+function isSubsequence(str1, str2) {
+  var i = 0;
+  var j = 0;
+  if (!str1) return true;
+  while (j < str2.length) {
+    if (str2[j] === str1[i]) i++;
+    if (i === str1.length) return true;
     j++;
   }
-
-  // after loop if first pointer > first string length - 1 return true otherwise return false
-  if (i > subseq.length - 1) return true;
   return false;
 }
-
-// hello
-// hello world
 
 console.log(isSubsequence('hello', 'hello world')); // true
 console.log(isSubsequence('sing', 'sting')); // true

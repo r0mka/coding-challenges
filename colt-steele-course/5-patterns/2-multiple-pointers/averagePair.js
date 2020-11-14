@@ -10,16 +10,14 @@
  * Space: O(1)
  */
 
-function averagePair(arr, target) {
-  if (arr.length === 0) return false;
-  let left = 0;
-  let right = arr.length - 1;
-
-  while (left < right) {
-    let avg = (arr[left] + arr[right]) / 2;
-    if (avg === target) return true;
-    if (avg > target) right--;
-    else left++;
+function averagePair(arr, num) {
+  let start = 0;
+  let end = arr.length - 1;
+  while (start < end) {
+    let avg = (arr[start] + arr[end]) / 2;
+    if (avg === num) return true;
+    else if (avg < num) start++;
+    else end--;
   }
   return false;
 }

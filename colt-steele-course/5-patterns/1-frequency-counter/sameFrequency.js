@@ -5,18 +5,25 @@
 // Time: O(N)
 
 function sameFrequency(num1, num2) {
-  const fistNumFrequency = {};
-  let str1 = num1.toString();
-  let str2 = num2.toString();
-  if (str1.length !== str2.length) return false;
+  let strNum1 = num1.toString();
+  let strNum2 = num2.toString();
+  if (strNum1.length !== strNum2.length) return false;
 
-  for (let i = 0; i < str1.length; i++) {
-    fistNumFrequency[str1[i]] = (fistNumFrequency[str1[i]] || 0) + 1;
+  let countNum1 = {};
+  let countNum2 = {};
+
+  for (let i = 0; i < strNum1.length; i++) {
+    countNum1[strNum1[i]] = (countNum1[strNum1[i]] || 0) + 1;
   }
-  for (let i = 0; i < str2.length; i++) {
-    if (!fistNumFrequency[str2[i]]) return false;
-    fistNumFrequency[str2[i]]--;
+
+  for (let j = 0; j < strNum1.length; j++) {
+    countNum2[strNum2[j]] = (countNum2[strNum2[j]] || 0) + 1;
   }
+
+  for (let key in countNum1) {
+    if (countNum1[key] !== countNum2[key]) return false;
+  }
+
   return true;
 }
 

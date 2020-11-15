@@ -8,7 +8,12 @@
 
 // Space Complexity - O(1)
 
-function minSubArrayLen() {}
+function minSubArrayLen(arr) {
+  let minLength = 0;
+  let tempSum = 0;
+
+  for (let i = 0; i < arr.length; i++) {}
+}
 
 console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7)); // 2 -> because [4,3] is the smallest subarray
 console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)); // 2 -> because [5,4] is the smallest subarray

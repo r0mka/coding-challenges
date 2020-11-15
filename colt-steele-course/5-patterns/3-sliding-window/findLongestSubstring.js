@@ -2,29 +2,25 @@
 // Time Complexity - O(n)
 
 function findLongestSubstring(str) {
-  let length = 0;
-  let minLength = 0;
-  const chars = {};
-  // loop over the string
-  for (let i = 0; i < str.length; i++) {
-    // increment length
-    length++;
-    // check if the char exists in chars
-    if (!chars[str[i]]) {
-      // save it as key on chars with its index as value
-      chars[str[i]] = i.toString();
-      if (length > minLength) minLength = length;
-    } else {
-      // set length to currentIdx - (index of the char)
+  let longest = 0;
+  let seen = {};
+  let start = 0;
 
-      length = i - parseInt(chars[str[i]]);
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      start = Math.max(start, seen[char]);
     }
+    // index - beginning of substring + 1 (to include current in count)
+    longest = Math.max(longest, i - start + 1);
+    // store the index of the next char so as to not double count
+    seen[char] = i + 1;
   }
-  return minLength;
+  return longest;
 }
 
-// console.log(findLongestSubstring('')); // 0
-// console.log(findLongestSubstring('rithmschool')); // 7
+console.log(findLongestSubstring('')); // 0
+console.log(findLongestSubstring('rithmschool')); // 7
 console.log(findLongestSubstring('thisisawesome')); // 6
 console.log(findLongestSubstring('thecatinthehat')); // 7
 console.log(findLongestSubstring('bbbbbb')); // 1

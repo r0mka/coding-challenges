@@ -84,14 +84,15 @@ function capitalizeWords(array) {
 }
 
 console.log('\nCAPITALIZE WORDS ====================');
-console.log(capitalizeWords(['car', 'taco', 'banana'])); // ['Car','Taco','Banana']
+let words = ['i', 'am', 'learning', 'recursion'];
+console.log(capitalizeWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
 
 // Write a recursive function called nestedEvenSum. Return the sum
 // of all even numbers in an object
 // which may contain nested objects
 
 function nestedEvenSum(obj, sum = 0) {
-  for (var key in obj) {
+  for (let key in obj) {
     if (typeof obj[key] === 'object') {
       sum += nestedEvenSum(obj[key]);
     } else if (typeof obj[key] === 'number' && obj[key] % 2 === 0) {
@@ -124,3 +125,84 @@ var obj2 = {
 console.log('\nNESTED EVEN SUM ====================');
 console.log(nestedEvenSum(obj1)); // 6
 console.log(nestedEvenSum(obj2)); // 10
+
+// Write a function called stringifyNumbers which takes in an object and finds all of the // //// values
+// which are numbers and converts them to strings. Recursion would be a great way to solve this.
+
+let obj = {
+  num: 1,
+  test: [],
+  data: {
+    val: 4,
+    info: {
+      isRight: true,
+      random: 66,
+    },
+  },
+};
+
+function stringifyNumbers(obj) {
+  let newObj = {};
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (
+      typeof obj[key] === 'object' &&
+      !Array.isArray(obj[key])
+    ) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+console.log('\nSTRINGIFY NUMBERS ====================');
+console.log(stringifyNumbers(obj));
+
+/*
+{
+    num: "1",
+    test: [],
+    data: {
+        val: "4",
+        info: {
+            isRight: true,
+            random: "66"
+        }
+    }
+}
+*/
+
+// Write a function called collectStrings which accepts an object and returns an array of all
+// the values in the object that have a typeof string
+const obj3 = {
+  stuff: 'foo',
+  data: {
+    val: {
+      thing: {
+        info: 'bar',
+        moreInfo: {
+          evenMoreInfo: {
+            weMadeIt: 'baz',
+          },
+        },
+      },
+    },
+  },
+};
+
+function collectStrings(obj) {
+  let stringsArr = [];
+  for (var key in obj) {
+    if (typeof obj[key] === 'string') {
+      stringsArr.push(obj[key]);
+    } else if (typeof obj[key] === 'object') {
+      stringsArr = stringsArr.concat(collectStrings(obj[key]));
+    }
+  }
+
+  return stringsArr;
+}
+console.log('\nCOLLECT STRINGS ====================');
+console.log(collectStrings(obj3)); // ["foo", "bar", "baz"])

@@ -39,8 +39,81 @@ function someRecursive(array, callback) {
   return someRecursive(array.slice(1), callback);
 }
 
-console.log('\nSome recursive ====================');
+console.log('\nSOME RECURSIVE ====================');
 console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
 console.log(someRecursive([4, 6, 8, 9], isOdd)); // true
 console.log(someRecursive([4, 6, 8], isOdd)); // false
 console.log(someRecursive([4, 6, 8], (val) => val > 10)); // false
+
+function flatten(oldArr) {
+  let newArr = [];
+  for (let i = 0; i < oldArr.length; i++) {
+    if (Array.isArray(oldArr[i])) {
+      newArr = newArr.concat(flatten(oldArr[i]));
+    } else {
+      newArr.push(oldArr[i]);
+    }
+  }
+  return newArr;
+}
+console.log('\nFLATTEN ====================');
+console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+console.log(flatten([[1], [2], [3]])); // [1,2,3]
+console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3]
+
+// Write a recursive function called capitalizeFirst. Given an array of strings,
+// capitalize the first letter of each string in the array.
+
+function capitalizeFirst(arr) {
+  if (arr.length === 0) return [];
+  let newArr = [arr[0].slice(0, 1).toUpperCase() + arr[0].slice(1)];
+  return newArr.concat(capitalizeFirst(arr.slice(1)));
+}
+
+console.log('\nCAPITALIZE FIRST ====================');
+console.log(capitalizeFirst(['car', 'taco', 'banana'])); // ['Car','Taco','Banana']
+
+function capitalizeWords(array) {
+  if (array.length === 1) {
+    return [array[0].toUpperCase()];
+  }
+  let res = capitalizeWords(array.slice(0, -1));
+  res.push(array.slice(array.length - 1)[0].toUpperCase());
+  return res;
+}
+
+console.log('\nCAPITALIZE WORDS ====================');
+console.log(capitalizeWords(['car', 'taco', 'banana'])); // ['Car','Taco','Banana']
+
+// Write a recursive function called nestedEvenSum. Return the sum
+// of all even numbers in an object
+// which may contain nested objects
+
+function nestedEvenSum() {
+  // add whatever parameters you deem necessary - good luck!
+}
+
+var obj1 = {
+  outer: 2,
+  obj: {
+    inner: 2,
+    otherObj: {
+      superInner: 2,
+      notANumber: true,
+      alsoNotANumber: 'yup',
+    },
+  },
+};
+
+var obj2 = {
+  a: 2,
+  b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
+  c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+  d: 1,
+  e: { e: { e: 2 }, ee: 'car' },
+};
+
+console.log('\nNESTED EVEN SUM ====================');
+console.log(nestedEvenSum(obj1)); // 6
+console.log(nestedEvenSum(obj2)); // 10

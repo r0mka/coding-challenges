@@ -4,10 +4,9 @@
  * the functionality of Math.pow() Do not worry about negative bases and exponents
  */
 
-function power(base, exp) {
-  if (exp === 0) return 1;
-  if (exp === 1) return base;
-  return base * power(base, --exp);
+function power(base, exponent) {
+  if (exponent === 0) return 1;
+  return base * power(base, exponent - 1);
 }
 console.log('\nPOWER ===========================');
 console.log(power(2, 3)); // 8
@@ -21,9 +20,10 @@ console.log(power(2, 4)); // 16
 // A factorial is the product of an integer and all the integers below it; e.g.,
 // factorial four (4!) is equal to 24, because 4 * 3 * 2 * 1 equals 24.
 // Factorial zero (0!) is always 1.
-function factorial(n) {
-  if (n === 1) return 1;
-  return n * factorial(n - 1);
+function factorial(x) {
+  if (x < 0) return 0;
+  if (x <= 1) return 1;
+  return x * factorial(x - 1);
 }
 console.log('\nFACTORIAL ===========================');
 console.log(factorial(1)); // 1
@@ -45,9 +45,9 @@ console.log(productOfArray([1, 2, 3, 10])); // 60
 // Write a function called recursiveRange which accepts a number
 // and adds up all the numbers from 0 to the number passed to
 // the function
-function recursiveRange(num) {
-  if (num === 1) return 1;
-  return num + recursiveRange(num - 1);
+function recursiveRange(x) {
+  if (x === 0) return 0;
+  return x + recursiveRange(x - 1);
 }
 
 console.log('\nRECURSIVE RANGE ===========================');
@@ -60,9 +60,9 @@ console.log(recursiveRange(10)); // 55
 // 1, 1, 2, 3, 5, 8 which starts with 1 and 1, and where every
 // number thereafter is equal to the sum of the previous two numbers.
 
-function fib(num) {
-  if (num <= 2) return 1;
-  return fib(num - 2) + fib(num - 1);
+function fib(n) {
+  if (n <= 2) return 1;
+  return fib(n - 1) + fib(n - 2);
 }
 
 console.log('\nFIBONACHI ===========================');

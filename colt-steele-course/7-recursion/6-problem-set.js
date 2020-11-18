@@ -25,8 +25,19 @@ function factorial(n) {
   if (n === 1) return 1;
   return n * factorial(n - 1);
 }
-console.log('\n\nFACTORIAL ===========================');
+console.log('\nFACTORIAL ===========================');
 console.log(factorial(1)); // 1
 console.log(factorial(2)); // 2
 console.log(factorial(4)); // 24
 console.log(factorial(7)); // 5040
+
+// Write a function called productOfArray which takes in an array
+// of numbers and returns the product of them all
+function productOfArray(arr) {
+  if (arr.length === 0) return 1;
+  return arr[0] * productOfArray(arr.slice(1));
+}
+
+console.log('\nFACTORIAL ===========================');
+console.log(productOfArray([1, 2, 3])); // 6
+console.log(productOfArray([1, 2, 3, 10])); // 60

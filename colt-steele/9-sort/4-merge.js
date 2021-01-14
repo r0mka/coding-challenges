@@ -2,10 +2,11 @@
     Merge is combination of splitting up sorting and merging.
     It exploits the fact that arrays of 0 or 1 element are always sorted.
     Works by decomposing an array into smaller arrays of 0 or 1 elements, then building up a newly sorted array.
+    Time complexity: O(nlogn)
+    Space complexity: (n)
  */
 
 // Merges two already sorted arrays
-// Merge function from earlier
 function merge(arr1, arr2) {
   let results = [];
   let i = 0;

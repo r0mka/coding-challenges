@@ -1,4 +1,4 @@
-Bubble , Insertion, Selection
+Time and Space complexity
 
 | Algorithm | Time Complexity(Best) | Time Complexity(Average) | Time Complexity(worst) | Space |
 | --------- | --------------------- | ------------------------ | ---------------------- | ----- |

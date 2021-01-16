@@ -24,25 +24,21 @@ class SinglyLinkedList {
     return this;
   }
   pop() {
-    if (!this.head) {
-      console.log('LIST IS EMPTY');
-      return;
+    if (!this.head) return undefined;
+    let current = this.head;
+    let newTail = current;
+    while (current.next) {
+      newTail = current;
+      current = current.next;
     }
-    if (this.length === 1) {
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
       this.head = null;
       this.tail = null;
-      this.length--;
-      return;
     }
-
-    let curr = this.head;
-    while (curr.next && curr.next !== this.tail) {
-      curr = curr.next;
-    }
-    curr.next = null;
-    delete this.tail;
-    this.tail = curr;
-    this.length--;
+    return current;
   }
 
   print() {

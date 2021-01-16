@@ -64,6 +64,26 @@ class SinglyLinkedList {
     return this;
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+
   print() {
     if (!this.head) {
       console.log('The list is empty');
@@ -105,4 +125,15 @@ console.log('============================\nBefore unshift: ');
 list.print();
 console.log('============================\nAfter unshift: ');
 list.unshift('GOOD BYE');
+list.print();
+
+console.log('===========================\nGet: ');
+
+console.log(list.get(1));
+
+console.log('===========================\nBefore Set: ');
+list.print();
+
+console.log('===========================\nAfter Set: ');
+list.set(1, '!!!');
 list.print();

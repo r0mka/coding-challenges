@@ -23,6 +23,27 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  pop() {
+    if (!this.head) {
+      console.log('LIST IS EMPTY');
+      return;
+    }
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return;
+    }
+
+    let curr = this.head;
+    while (curr.next && curr.next !== this.tail) {
+      curr = curr.next;
+    }
+    curr.next = null;
+    delete this.tail;
+    this.tail = curr;
+    this.length--;
+  }
 
   print() {
     if (!this.head) {
@@ -42,4 +63,11 @@ const list = new SinglyLinkedList();
 list.push('HELLO');
 list.push('GOODBYE');
 list.push('HELLO AGAIN');
+
+console.log('============================\nBefore pop:');
+list.print();
+list.pop();
+list.pop();
+
+console.log('============================\nAfter pop:');
 list.print();

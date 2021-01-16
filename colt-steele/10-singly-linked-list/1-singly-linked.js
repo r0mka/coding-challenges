@@ -23,8 +23,23 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  print() {
+    if (!this.head) {
+      console.log('The list is empty');
+      return;
+    }
+    let curr = this.head;
+    console.log(curr.val);
+    while (curr.next) {
+      curr = curr.next;
+      console.log(curr.val);
+    }
+  }
 }
 
 const list = new SinglyLinkedList();
-// list.push("HELLO")
-// list.push("GOODBYE")
+list.push('HELLO');
+list.push('GOODBYE');
+list.push('HELLO AGAIN');
+list.print();

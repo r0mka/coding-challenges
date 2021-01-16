@@ -41,11 +41,14 @@ class SinglyLinkedList {
     return current;
   }
   shift(val) {
-    const newNode = new Node(val);
-    newNode.next = this.head;
-
-    this.head = newNode;
-    this.length++;
+    if (!this.head) return undefined;
+    const currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
   }
 
   print() {
@@ -81,7 +84,6 @@ list.push('HELLO AGAIN');
 console.log('============================\nBefore shift: ');
 list.print();
 
-list.shift('HELLO');
-
 console.log('============================\nAfter shift: ');
+console.log(list.shift());
 list.print();

@@ -40,6 +40,13 @@ class SinglyLinkedList {
     }
     return current;
   }
+  shift(val) {
+    const newNode = new Node(val);
+    newNode.next = this.head;
+
+    this.head = newNode;
+    this.length++;
+  }
 
   print() {
     if (!this.head) {
@@ -64,6 +71,17 @@ console.log('============================\nBefore pop:');
 list.print();
 list.pop();
 list.pop();
-
+list.pop();
 console.log('============================\nAfter pop:');
+list.print();
+
+list.push('GOODBYE');
+list.push('HELLO AGAIN');
+
+console.log('============================\nBefore shift: ');
+list.print();
+
+list.shift('HELLO');
+
+console.log('============================\nAfter shift: ');
 list.print();

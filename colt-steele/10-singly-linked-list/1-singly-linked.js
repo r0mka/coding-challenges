@@ -51,6 +51,19 @@ class SinglyLinkedList {
     return currentHead;
   }
 
+  unshift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
   print() {
     if (!this.head) {
       console.log('The list is empty');
@@ -86,4 +99,10 @@ list.print();
 
 console.log('============================\nAfter shift: ');
 console.log(list.shift());
+list.print();
+
+console.log('============================\nBefore unshift: ');
+list.print();
+console.log('============================\nAfter unshift: ');
+list.unshift('GOOD BYE');
 list.print();

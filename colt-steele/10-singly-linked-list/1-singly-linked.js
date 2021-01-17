@@ -124,16 +124,13 @@ class SinglyLinkedList {
   }
 
   print() {
-    if (!this.head) {
-      console.log('The list is empty');
-      return;
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
     }
-    let curr = this.head;
-    console.log(curr.val);
-    while (curr.next) {
-      curr = curr.next;
-      console.log(curr.val);
-    }
+    console.log(arr);
   }
 }
 

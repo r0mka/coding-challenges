@@ -84,6 +84,29 @@ class SinglyLinkedList {
     return false;
   }
 
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+
+    const newNode = new Node(val);
+    const prev = this.get(index - 1);
+    const temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
+  remove(index) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+
+    const prev = this.get(index - 1);
+    prev.next = this.get(index).next;
+    return this;
+  }
+
   print() {
     if (!this.head) {
       console.log('The list is empty');
@@ -137,3 +160,14 @@ list.print();
 console.log('===========================\nAfter Set: ');
 list.set(1, '!!!');
 list.print();
+list.push('Hi');
+console.log('===========================\nBefore Insert: ');
+list.print();
+
+list.insert(2, 'Roman');
+
+console.log('===========================\nAfter Insert: ');
+list.print();
+
+console.log('===========================\nBefore Remove: ');
+console.log('===========================\nAfter Remove: ');

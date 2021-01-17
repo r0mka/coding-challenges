@@ -98,13 +98,14 @@ class SinglyLinkedList {
     return true;
   }
   remove(index) {
-    if (index < 0 || index > this.length) return false;
-    if (index === this.length - 1) return this.pop();
+    if (index < 0 || index >= this.length) return undefined;
     if (index === 0) return this.shift();
-
-    const prev = this.get(index - 1);
-    prev.next = this.get(index).next;
-    return this;
+    if (index === this.length - 1) return this.pop();
+    const previousNode = this.get(index - 1);
+    const removed = previousNode.next;
+    previousNode.next = removed.next;
+    this.length--;
+    return removed;
   }
 
   print() {
@@ -170,4 +171,8 @@ console.log('===========================\nAfter Insert: ');
 list.print();
 
 console.log('===========================\nBefore Remove: ');
+list.print();
+
+list.remove(2);
 console.log('===========================\nAfter Remove: ');
+list.print();

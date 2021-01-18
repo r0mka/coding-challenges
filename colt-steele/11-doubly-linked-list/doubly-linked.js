@@ -132,6 +132,29 @@ class DoublyLinkedList {
     this.length--;
     return removedNode;
   }
+
+  reverse() {
+    // My own implementation of reverse
+    if (this.length < 2) return this;
+    const oldHead = this.head;
+    const oldTail = this.tail;
+
+    this.tail = oldHead;
+    this.head = oldTail;
+
+    let current = this.head;
+
+    for (let i = this.length - 1; i >= 0; i--) {
+      let prev = current.prev;
+      let next = current.next;
+
+      current.next = prev;
+      current.prev = next;
+      current = current.next;
+    }
+    return this;
+  }
+
   print() {
     let current = this.head;
     const arr = [];
@@ -198,4 +221,9 @@ list.print();
 console.log(list.remove(0));
 list.print();
 console.log(list.remove(3));
+list.print();
+
+console.log('Reverse=================');
+list.print();
+console.log(list.reverse());
 list.print();

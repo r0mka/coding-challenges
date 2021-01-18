@@ -1,4 +1,4 @@
-# Linked List Big O
+# Singly Linked List Big O
 
 |           | Time Complexity            |
 | --------- | -------------------------- |

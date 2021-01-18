@@ -89,6 +89,15 @@ class DoublyLinkedList {
     return current;
   }
 
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode != null) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+
   print() {
     let current = this.head;
     const arr = [];
@@ -137,3 +146,8 @@ list.print();
 console.log('Get=================');
 list.print();
 console.log(list.get(2));
+
+console.log('Set=================');
+list.print();
+list.set(2, 565);
+list.print();

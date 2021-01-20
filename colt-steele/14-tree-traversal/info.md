@@ -46,3 +46,15 @@ In order to implement breadth first search we're gonna use a `Queue`
 ```
 
 [3, 8, 6, 20, 15, 10]
+
+## DFS InOrder
+
+```
+              10
+            /     \
+           6      15
+          / \        \
+         3   8       20
+```
+
+[3, 6, 8, 10, 15, 20]

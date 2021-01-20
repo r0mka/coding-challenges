@@ -23,7 +23,7 @@ There are 2 main ways to traversing a tree
 
 In order to implement breadth first search we're gonna use a `Queue`
 
-## DFS Preorder
+## DFS PreOrder
 
 ```
               10
@@ -34,3 +34,15 @@ In order to implement breadth first search we're gonna use a `Queue`
 ```
 
 [10, 6, 3, 8, 15, 20]
+
+## DFS PostOrder
+
+```
+              10
+            /     \
+           6      15
+          / \        \
+         3   8       20
+```
+
+[3, 8, 6, 20, 15, 10]

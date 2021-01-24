@@ -27,7 +27,7 @@ Although these are the same numbers, this is NOT a binary heap! This is a binary
 - In a max Binary Heap the parent is greater than the children, but there are
   no guarantees between sibling nodes.
 - A binary heap is as compact as possible. All the children of each node are as full as they can
-  be and left children are filled out first. Always takes up the least amount of space possible.
+  be and `left` children are filled out first. Always takes up the least amount of space possible.
 
 ```
           100
@@ -76,7 +76,7 @@ Max Binary Heap
 
 [100, 19, 36, 17, 12, 25, 5, 9, 15, 6, 11, 13, 8, 1, 4]
 For any index of an array n... The left child is stored at `2n + 1`
-The right child is `2n + 2`
+The right child is `2n + 2`. For any child node at index `n` Its parent is at index `floor((n - 1) / 2)`
 
 ```
               100

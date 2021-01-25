@@ -76,7 +76,7 @@ Max Binary Heap
 
 [100, 19, 36, 17, 12, 25, 5, 9, 15, 6, 11, 13, 8, 1, 4]
 For any index of an array n... The left child is stored at `2n + 1`
-The right child is `2n + 2`. For any child node at index `n` Its parent is at index `floor((n - 1) / 2)`
+The right child is `2n + 2`. For any child node at index `n` Its parent is at index `Math.floor((n - 1) / 2)`
 
 ```
               100

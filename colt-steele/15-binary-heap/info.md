@@ -85,12 +85,13 @@ The right child is `2n + 2`. For any child node at index `n` Its parent is at in
  9   15  6  11   13   8    1   4
 ```
 
-|           | Time Complexity |     |
-| --------- | --------------- | --- |
+|           | Time Complexity |
+| --------- | --------------- |
 | Insertion | O(logN)         |
-| Removal   | O(logN)         |     |
-| Search    | O(N)            |     |
+| Removal   | O(logN)         |
+| Search    | O(N)            |
 
 - Binary heaps are very useful data structure for sorting , and implementing other data structures like priority queues.
 - Binary heap are eithe `maxBinaryHeaps` or `minBinaryHeaps` with parents either being smaller or larger than their children.
 - We can reperesent heaps usin arrays.
+  h

@@ -17,15 +17,32 @@ class Graph {
       (v) => v !== vertex1
     );
   }
+  removeVertex(vertex) {
+    while (this.adjacencyList[vertex].length) {
+      const adjacentVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, adjacentVertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
 }
 
 const g = new Graph();
 
-g.addVertex('Tokyo');
 g.addVertex('Dallas');
+g.addVertex('Tokyo');
 g.addVertex('Aspen');
-g.addEdge('Tokyo', 'Dallas');
+g.addVertex('Hong Kong');
+g.addVertex('Los Angeles');
+
+g.addEdge('Dallas', 'Tokyo');
 g.addEdge('Dallas', 'Aspen');
+g.addEdge('Tokyo', 'Hong Kong');
+g.addEdge('Hong Kong', 'Dallas');
+g.addEdge('Los Angeles', 'Hong Kong');
+g.addEdge('Los Angeles', 'Dallas');
+
 console.log(g);
-g.removeEdge('Dallas', 'Aspen');
+
+g.removeVertex('Hong Kong');
+
 console.log(g);

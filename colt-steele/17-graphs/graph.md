@@ -40,3 +40,15 @@ When we assign a value to the edges it becomes a `weighted graph`. There is info
 | Remove Edge   | O(abs(E))          | O(1)              |
 | Query         | O(abs(V) + abs(E)) | O(1)              |
 | Storage       | O(abs(V) + abs(E)) | O(abs(V^2))       |
+
+## Adding an Edge
+
+- This function should accept two vertices, we can call them vertex1 and vertex2
+- The function should find in the adjacency list the key of vertex1
+  and push vertex2 to the array
+
+## Removing an Edge
+
+- This function should accept two vertices, we'll call them vertex1 and vertex2
+- The function should reassign the key of vertex1 to be an array that does not contain vertex2
+- The function should reassign the key of vertex2 to be an array that does not contain vertex1

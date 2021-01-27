@@ -1,3 +1,11 @@
+/*
+  Problems with this hashing function
+  1. Only hashes strings
+  2. Not constant time - linear in key length
+  3. Could be a little more random
+
+*/
+
 function hash(key, arrayLen) {
   let total = 0;
   for (let char of key) {

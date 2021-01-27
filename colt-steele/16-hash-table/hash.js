@@ -1,4 +1,4 @@
-function basicHash(key, arrayLen) {
+function hash(key, arrayLen) {
   let total = 0;
   for (let char of key) {
     // map "a" to 1, "b" to 2, "c" to 3, etc.
@@ -7,8 +7,8 @@ function basicHash(key, arrayLen) {
   }
   return total;
 }
-console.log(basicHash('pink', 13));
-console.log(basicHash('orange', 13));
-console.log(basicHash('cyan', 13));
-console.log(basicHash('blue', 13));
-console.log(basicHash('purple', 13));
+console.log(hash('pink', 13));
+console.log(hash('orange', 13));
+console.log(hash('cyan', 13));
+console.log(hash('blue', 13));
+console.log(hash('purple', 13));

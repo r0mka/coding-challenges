@@ -7,7 +7,7 @@
 
 */
 
-// O(N) time | O(1) space
+// O(N) time | O(N) space
 function twoNumberSum(array, targetSum) {
   const nums = {};
   for (const num of array) {

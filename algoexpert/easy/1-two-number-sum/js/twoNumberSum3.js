@@ -7,7 +7,7 @@
 
 */
 
-// O(N) time | O(1) space
+// O(NlogN) time | O(1) space
 function twoNumberSum(array, targetSum) {
   // use two pointers
   // sort the array Nlog(N)

@@ -1,5 +1,5 @@
 def two_number_sum(array, target_sum):
-    for i in range(len(array)):
+    for i in range(len(array) - 1):
         firstNum = array[i]
         for j in range(i + 1, len(array)):
             secondNum = array[j]

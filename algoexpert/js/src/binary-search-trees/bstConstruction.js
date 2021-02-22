@@ -2,10 +2,11 @@
           10 
       /       \
      5         15
-    / \        / \
-   2   5     13   22
-  /          / \
- 1         12   14
+    / \        /    \
+   2   5     13       22
+  /          / \     
+ 1         12   14  
+                   
 */
 
 class BST {
@@ -14,33 +15,55 @@ class BST {
     this.left = null;
     this.right = null;
   }
+  // recursively
+  //   insert(value) {
+  //     if (value < this.value) {
+  //       if (this.left === null) {
+  //         this.left = new BST(value);
+  //       } else {
+  //         this.left.insert(value);
+  //       }
+  //     } else {
+  //       if (this.right === null) {
+  //         this.right = new BST(value);
+  //       } else {
+  //         this.right.insert(value);
+  //       }
+  //     }
+  //     return this;
+  //   }
 
+  // iteratevely
   insert(value) {
-    const newNode = new BST(value);
-    let current = this;
+    let currentNode = this;
     while (true) {
-      if (value >= current.value) {
-        if (current.right) {
-          current = current.right;
-        } else {
-          current.right = newNode;
+      if (value < currentNode.value) {
+        if (currentNode.left === null) {
+          currentNode.left = new BST(value);
           break;
+        } else {
+          currentNode = currentNode.left;
         }
       } else {
-        if (current.left) {
-          current = current.left;
-        } else {
-          current.left = newNode;
+        if (currentNode.right === null) {
+          currentNode.right = new BST(value);
           break;
+        } else {
+          currentNode = currentNode.right;
         }
       }
     }
     return this;
   }
-
   contains(value) {}
 
   remove(value) {
+    let current = this;
+    let prev;
+    while (true) {
+      if (value === current.value) {
+      }
+    }
     return this;
   }
 }

@@ -8,6 +8,10 @@ const BST = require('./bstConstruction');
    2   5     13   22
   /           \
  1             14
+
+ Insertion, Search, Deletion
+ Average: O(log(N)) time | O(N) space recursively | O(1) iteratively
+ Worst: O(N) time | O(N) space recursively | O(1) iteratively
 */
 
 let bst;

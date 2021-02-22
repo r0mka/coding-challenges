@@ -116,24 +116,24 @@ it('Insert Test #10', () => {
   });
 });
 
-it('Containes Test #1', () => {
+it('Contains Test #1', () => {
   expect(bst.contains(10)).toEqual(true);
 });
-it('Containes Test #2', () => {
+it('Contains Test #2', () => {
   expect(bst.contains(12)).toEqual(true);
 });
-it('Containes Test #3', () => {
+it('Contains Test #3', () => {
   expect(bst.contains(5)).toEqual(true);
 });
-it('Containes Test #4', () => {
+it('Contains Test #4', () => {
   expect(bst.contains(22)).toEqual(true);
 });
-it('Containes Test #5', () => {
+it('Contains Test #5', () => {
   expect(bst.contains(13)).toEqual(true);
 });
-it('Containes Test #6', () => {
+it('Contains Test #6', () => {
   expect(bst.contains(7)).toEqual(false);
 });
-it('Containes Test #6', () => {
+it('Contains Test #6', () => {
   expect(bst.contains(11)).toEqual(false);
 });

@@ -56,31 +56,36 @@ class BST {
     return this;
   }
   // recursively
+  //   contains(value) {
+  //     if (value < this.value) {
+  //       if (this.left === null) {
+  //         return false;
+  //       } else {
+  //         return this.left.contains(value);
+  //       }
+  //     } else if (value > this.value) {
+  //       if (this.right === null) {
+  //         return false;
+  //       } else {
+  //         return this.right.contains(value);
+  //       }
+  //     } else return true;
+  //   }
+
+  // iteratevly
   contains(value) {
-    if (value < this.value) {
-      if (this.left === null) {
-        return false;
-      } else {
-        return this.left.contains(value);
-      }
-    } else if (value > this.value) {
-      if (this.right === null) {
-        return false;
-      } else {
-        return this.right.contains(value);
-      }
-    } else return true;
+    let currentNode = this;
+    while (currentNode !== null) {
+      if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      } else return true;
+    }
+    return false;
   }
 
-  remove(value) {
-    let current = this;
-    let prev;
-    while (true) {
-      if (value === current.value) {
-      }
-    }
-    return this;
-  }
+  remove(value) {}
 }
 
 module.exports = BST;

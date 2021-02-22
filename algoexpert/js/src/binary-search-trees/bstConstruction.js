@@ -55,7 +55,22 @@ class BST {
     }
     return this;
   }
-  contains(value) {}
+  // recursively
+  contains(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    } else return true;
+  }
 
   remove(value) {
     let current = this;

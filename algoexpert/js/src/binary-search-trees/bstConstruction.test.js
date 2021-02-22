@@ -6,8 +6,8 @@ const BST = require('./bstConstruction');
      5         15
     / \        / \
    2   5     13   22
-  /           \
- 1             14
+  /         /  \
+ 1        12    14
 
  Insertion, Search, Deletion
  Average: O(log(N)) time | O(N) space recursively | O(1) iteratively
@@ -25,12 +25,12 @@ let bst;
 // bst.insert(14);
 // bst.insert(12);
 
-it('Insert #1', () => {
+it('Insert Test #1', () => {
   bst = new BST(10);
   expect(bst).toEqual({ value: 10, left: null, right: null });
 });
 
-it('Insert #2', () => {
+it('Insert Test #2', () => {
   expect(bst.insert(5)).toEqual({
     value: 10,
     left: { value: 5, left: null, right: null },
@@ -38,7 +38,7 @@ it('Insert #2', () => {
   });
 });
 
-it('Insert #3', () => {
+it('Insert Test #3', () => {
   expect(bst.insert(2)).toEqual({
     value: 10,
     left: {
@@ -50,7 +50,7 @@ it('Insert #3', () => {
   });
 });
 
-it('Insert #4', () => {
+it('Insert Test #4', () => {
   expect(bst.insert(5)).toEqual({
     value: 10,
     left: {
@@ -60,4 +60,80 @@ it('Insert #4', () => {
     },
     right: null,
   });
+});
+
+it('Insert Test #5', () => {
+  expect(bst.insert(1)).toEqual({
+    value: 10,
+    left: {
+      value: 5,
+      left: {
+        value: 2,
+        left: { value: 1, left: null, right: null },
+        right: null,
+      },
+      right: { value: 5, left: null, right: null },
+    },
+    right: null,
+  });
+});
+
+it('Insert Test #6', () => {
+  expect(bst.insert(15).right).toEqual({
+    value: 15,
+    left: null,
+    right: null,
+  });
+});
+it('Insert Test #7', () => {
+  expect(bst.insert(13).right.left).toEqual({
+    value: 13,
+    left: null,
+    right: null,
+  });
+});
+it('Insert Test #8', () => {
+  expect(bst.insert(22).right.right).toEqual({
+    value: 22,
+    left: null,
+    right: null,
+  });
+});
+
+it('Insert Test #9', () => {
+  expect(bst.insert(14).right.left.right).toEqual({
+    value: 14,
+    left: null,
+    right: null,
+  });
+});
+
+it('Insert Test #10', () => {
+  expect(bst.insert(12).right.left.left).toEqual({
+    value: 12,
+    left: null,
+    right: null,
+  });
+});
+
+it('Containes Test #1', () => {
+  expect(bst.contains(10)).toEqual(true);
+});
+it('Containes Test #2', () => {
+  expect(bst.contains(12)).toEqual(true);
+});
+it('Containes Test #3', () => {
+  expect(bst.contains(5)).toEqual(true);
+});
+it('Containes Test #4', () => {
+  expect(bst.contains(22)).toEqual(true);
+});
+it('Containes Test #5', () => {
+  expect(bst.contains(13)).toEqual(true);
+});
+it('Containes Test #6', () => {
+  expect(bst.contains(7)).toEqual(false);
+});
+it('Containes Test #6', () => {
+  expect(bst.contains(11)).toEqual(false);
 });

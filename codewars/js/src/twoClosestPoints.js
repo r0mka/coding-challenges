@@ -1,72 +1,77 @@
-function twoClosestPoints(points) {
+function closestPair(points) {
   const sortedByX = points.sort((a, b) => a[0] - b[0]);
-  const sortedByY = sortedByX.slice().sort((a, b) => a[1] - b[1]);
+  const sortedByY = points.slice().sort((a, b) => a[1] - b[1]);
 
-  return closestPair(sortedByX, sortedByY);
+  return divideAndConquer(sortedByX, sortedByY)[1];
 }
 
-function closestPairInVerticalStrip(stripArray, minDistance) {
-  let minValue = minDistance;
-
-  for (let i = 0; i < stripArray.length; i++) {
-    for (
-      let j = i + 1;
-      j < Math.min(stripArray.length, i + 1 + 7);
-      j++
-    ) {
-      minValue = Math.min(
-        minValue,
-        dist(stripArray[i], stripArray[j])
-      );
-    }
-  }
-  return minValue;
-}
-function bruteForce(sortedByX) {
-  let min = Infinity;
-  for (let i = 0; i < sortedByX.length - 1; i++) {
-    let d = dist(sortedByX[i], sortedByX[i + 1]);
-    if (d < Infinity) min = d;
-  }
-  if (sortedByX.length === 3) {
-    let d = dist(sortedByX[0], sortedByX[2]);
-    min = Math.min(min, d);
-  }
-  return min;
-}
-
-function closestPair(sortedByX, sortedByY) {
+function divideAndConquer(sortedByX, sortedByY) {
   if (sortedByX.length <= 3) return bruteForce(sortedByX);
 
   let mid = Math.floor(sortedByX.length / 2);
 
   let midPoint = sortedByX[mid];
 
-  let left = sortedByX.slice(0, mid);
-  let right = sortedByX.slice(mid);
+  let leftHalf = sortedByX.slice(0, mid);
+  let rightHalf = sortedByX.slice(mid);
 
-  let distanceLeft = closestPair(left, sortedByY);
+  let left = divideAndConquer(leftHalf, sortedByY);
 
-  let distanceRight = closestPair(right, sortedByY);
+  let right = divideAndConquer(rightHalf, sortedByY);
 
-  let distance = Math.min(distanceLeft, distanceRight);
+  //   let distance = Math.min(distanceLeft, distanceRight);
+
+  let currentBest;
+
+  if (left[0] < right[0]) {
+    currentBest = left;
+  } else {
+    currentBest = right;
+  }
 
   let middleStrip = [];
 
   for (let i = 0; i < sortedByY.length; i++) {
-    if (Math.abs(sortedByY[i][0] - midPoint[0]) <= distance) {
+    if (Math.abs(sortedByY[i][0] - midPoint[0]) <= currentBest[0]) {
       middleStrip.push(sortedByY[i]);
     }
   }
 
-  return Math.min(
-    distance,
-    closestPairInVerticalStrip(middleStrip, distance)
-  );
+  return closestPairInVerticalStrip(middleStrip, currentBest);
+}
+function closestPairInVerticalStrip(stripArray, currentBest) {
+  for (let i = 0; i < stripArray.length; i++) {
+    for (
+      let j = i + 1;
+      j < Math.min(stripArray.length, i + 1 + 7);
+      j++
+    ) {
+      let d = dist(stripArray[i], stripArray[j]);
+      if (d < currentBest[0]) {
+        currentBest = [d, [stripArray[i], stripArray[j]]];
+      }
+    }
+  }
+  return currentBest;
 }
 
 function dist(p, q) {
   return Math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2);
+}
+
+function bruteForce(sortedByX) {
+  let bestPair;
+  let min = Infinity;
+  for (let i = 0; i < sortedByX.length; i++) {
+    for (let j = i + 1; j < sortedByX.length; j++) {
+      let d = dist(sortedByX[i], sortedByX[j]);
+      if (d < min) {
+        min = d;
+        bestPair = [sortedByX[i], sortedByX[j]];
+      }
+    }
+  }
+  return [min, bestPair];
 }
 
 let points = [
@@ -79,7 +84,11 @@ let points = [
   [7, 9], // G   7     9
 ];
 
-console.log(twoClosestPoints(points));
+// [2,2], [2,8], [5,5], [6,3], [6,7], [7,4], [7,9]
+
+// [2,2], [6,3], [7,4], [5,5], [6,7], [2,8], [7,9]
+
+console.log(closestPair(points));
 
 // [2,2], [2,8], [5,5], [6,3], [6,7], [7,4], [7,9]
 

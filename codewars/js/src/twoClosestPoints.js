@@ -5,7 +5,7 @@ function twoClosestPoints(points) {
   return closestPair(sortedByX, sortedByY);
 }
 
-function calculateStrip(stripArray, minDistance) {
+function closestPairInVerticalStrip(stripArray, minDistance) {
   let minValue = minDistance;
 
   for (let i = 0; i < stripArray.length; i++) {
@@ -51,15 +51,18 @@ function closestPair(sortedByX, sortedByY) {
 
   let distance = Math.min(distanceLeft, distanceRight);
 
-  let stripArray = [];
+  let middleStrip = [];
 
   for (let i = 0; i < sortedByY.length; i++) {
-    if (Math.abs(sortedByY[i][0] - midPoint[0])) {
-      stripArray.push(sortedByY[i]);
+    if (Math.abs(sortedByY[i][0] - midPoint[0]) <= distance) {
+      middleStrip.push(sortedByY[i]);
     }
   }
 
-  return Math.min(distance, calculateStrip(stripArray, distance));
+  return Math.min(
+    distance,
+    closestPairInVerticalStrip(middleStrip, distance)
+  );
 }
 
 function dist(p, q) {

@@ -55,10 +55,6 @@ function closestPairInVerticalStrip(stripArray, currentBest) {
   return currentBest;
 }
 
-function dist(p, q) {
-  return Math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2);
-}
-
 function bruteForce(sortedByX) {
   let bestPair;
   let min = Infinity;
@@ -72,6 +68,10 @@ function bruteForce(sortedByX) {
     }
   }
   return [min, bestPair];
+}
+
+function dist(p, q) {
+  return Math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2);
 }
 
 let points = [
@@ -89,7 +89,7 @@ let points = [
 // [2,2], [6,3], [7,4], [5,5], [6,7], [2,8], [7,9]
 
 console.log(closestPair(points));
-
+console.log(bruteForce(points)[1]);
 // [2,2], [2,8], [5,5], [6,3], [6,7], [7,4], [7,9]
 
 // [2,2], [6,3], [7,4], [5,5], [6,7], [2,8], [7,9]

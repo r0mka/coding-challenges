@@ -137,3 +137,10 @@ it('Contains Test #6', () => {
 it('Contains Test #6', () => {
   expect(bst.contains(11)).toEqual(false);
 });
+
+it('Remove Test #1', () => {
+  bst.remove(15);
+  expect(bst.right.value).toEqual(22);
+  expect(bst.right.left.value).toEqual(13);
+  expect(bst.right.right).toEqual(null);
+});

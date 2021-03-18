@@ -6,4 +6,14 @@
 
 const sortedSquaredArray = require('./sortedSquaredArray');
 
-it('Test Case #1', () => {});
+it('Test Case #1', () => {
+  expect(sortedSquaredArray([1, 2, 3, 5, 6, 8, 9])).toEqual([
+    1,
+    4,
+    9,
+    25,
+    36,
+    64,
+    81,
+  ]);
+});

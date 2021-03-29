@@ -22,7 +22,7 @@ int main() {
     
 }
 
-// O(nlogn | O(1) space)
+// O(nlogn) | O(1) space
 std::vector<int> twoNumberSum(std::vector<int> array,  int targetSum){
     std::sort(array.begin(), array.end());
      
@@ -57,6 +57,7 @@ std::vector<int> twoNumberSum2(std::vector<int> array,  int targetSum){
     }
     return {};
 }
+// O(n^2) time | O(1) space
 std::vector<int> twoNumberSum3(std::vector<int> array,  int targetSum){
     for(int i= 0; i < array.size() - 1; i++) {
         int firstNum = array[i]; 

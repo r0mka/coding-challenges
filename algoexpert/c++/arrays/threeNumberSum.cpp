@@ -22,38 +22,33 @@
 #include <vector>
 #include <algorithm>
 
-std::vector<int*> threeNumberSum (std::vector<int> array,  int targetSum){
+std::vector<std::vector<int>> threeNumberSum (std::vector<int> array,  int targetSum){
     std::sort(array.begin(), array.end());
-    std::vector<int*> result; 
+    std::vector<std::vector<int>> triplets; 
 
-    for(int i = 0; i < array.size() - 1; i++) {
+    for(int i = 0; i < array.size() - 2; i++) {
         int left = i + 1; 
         int right = array.size() - 1; 
 
         while(left < right) {
-            int sum = targetSum - array[i];
-            int currentSum = array[left] + array[right];
-            if (currentSum < sum) {
+            int currentSum = array[i] + array[left] + array[right];
+            if (currentSum < targetSum) {
                 left++; 
-            } else if (currentSum > sum) {
+            } else if (currentSum > targetSum) {
                 right--; 
             } else {
-                int* arr = new int[3];
-                arr[0] = array[i]; 
-                arr[1] = array[left];
-                arr[2] = array[right];  
-                result.push_back(arr);
+                triplets.push_back({{array[i], array[left], array[right]}});
                 left++; 
                 right--;
             }
         }
     }
-    return result;
+    return triplets;
 }
 
 int main() {
     std::vector<int> input {12, 3, 1, 2, -6, 5, -8, 6};
-    std::vector<int*> result = threeNumberSum(input,  0);
+    std::vector<std::vector<int>> result = threeNumberSum(input,  0);
     for(int i = 0; i < result.size(); i++) {
         std::cout << result[i][0] << ", " << result[i][1] << ", " << result[i][2] << std::endl;
     }
